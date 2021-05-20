@@ -24,16 +24,15 @@ function Linear:step(state, dt)
 	local goalType = typeof(goal)
 	assert(positionType == goalType, TYPE_MISMATCH_ERROR:format(positionType, goalType))
 
-	local dPos, complete
+	local dPos = dt * velocity
+	local complete
 	if positionType == "number" then
-		dPos = dt * velocity
 		complete = dPos >= math.abs(goal - position)
 		position = position + dPos * (goal > position and 1 or -1)
 	else
 		local posToGoal = goal - position
-		dPos = posToGoal.Unit * dt * velocity
-		complete = dPos.Magnitude >= posToGoal.Magnitude
-		position = position + dPos
+		complete = dPos >= posToGoal.Magnitude
+		position = position + posToGoal.Unit * dPos
 	end
 
 	if complete then
