@@ -1,8 +1,13 @@
+
 <p align="center">
 	<img src=".github/logo.svg" height="180">
 	<br>
 	Flipper is an animation library for Roblox based around Motors and Goals.
 </p>
+
+# Fork changes
+This fork allows you to input Vector2 and Vector3 values for the initial and target values. I find
+this to be more convenient than using GroupMotors, and you might get 2-4x performance gains.
 
 # Installation
 
